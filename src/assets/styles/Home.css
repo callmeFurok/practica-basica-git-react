@@ -1,22 +1,108 @@
 @import url('https://fonts.googleapis.com/css2?family=Raleway:wght@600&display=swap');
 
+:root {
+    --clip: circle(0% at top right);
+    --transition-modal: 0.5s transform;
+    --show: scale(0);
+    --transition-bg: 1s .5s clip-path;
+}
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
+
 .home {
-    width: 100vw;
+    font-family: 'Raleway', sans-serif;
     height: 100vh;
     display: flex;
-    background-color: #f5f5f5;
 }
 
-.home__title {
-    font-size: 3.5rem;
-    font-weight: bold;
-    color: #000;
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    display: flex;
+    clip-path: var(--clip);
+    transition: var(--transition-bg);
+}
+
+.modal:target {
+    --clip: circle(150% at top right);
+    --transition-modal: .5s 1s transform;
+    --show: scale(1);
+    --transition-bg: 1s clip-path;
+}
+
+.modal__container {
+    background: white;
+    width: 90%;
+    min-height: 70%;
     margin: auto;
+    display: grid;
+    grid-template-columns: repeat(8, 1fr);
+    grid-template-rows: repeat(4, 1fr);
+    position: relative;
+    transform: var(--show);
+    transition: var(--transition-modal);
+}
+
+.modal__close {
+    position: absolute;
+    color: white;
+    background: crimson;
+    cursor: pointer;
+    width: 30px;
+    height: 30px;
+    display: block;
+    text-align: center;
+    text-decoration: none;
+    line-height: 30px;
+    top: 0;
+    right: 0;
+}
+
+.modal__img {
+    grid-row: 1/-1;
+    grid-column: 1/4;
+    width: 80%;
+    place-self: center;
+}
+
+.modal__texts {
+    grid-row: 2/-2;
+    grid-column: 4/-2;
+    place-self: center;
     font-family: 'Raleway', sans-serif;
+    display: grid;
+    gap: 20px;
+}
+
+.modal__title {
+    font-size: 2.5rem;
+    font-family: 'Playfair Display', serif;
+    text-align: center;
+}
+
+.modal__paragraph {
+    font-size: 1.5rem;
+    text-align: center;
+}
+
+.cta {
+    display: inline-block;
+    margin: auto;
+    background: #5050f0;
+    text-decoration: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    color: white;
+    font-size: 1rem;
+    text-align: center;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
 }
