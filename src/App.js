@@ -1,10 +1,9 @@
 import React from 'react';
+import Home from "./containers/Home";
 
 const App = () => {
     return (
-        <div>
-            <h1>Hello Word</h1>
-        </div>
+        <Home/>
     );
 };
 
